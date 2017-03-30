@@ -77,7 +77,7 @@ def top_ten
 end
 
 def stats_player(name)
-  #player = Player.find_by name: name
+  player = Player.find_by full_name: name
 end
 
 welcome
