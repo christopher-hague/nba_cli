@@ -1,5 +1,6 @@
 require_relative '../config/environment'
 
+Adapters::PlayerStats.new.seed_db
 def welcome
   puts "Welcome to the NBA stat tracker!"
   prompt
@@ -22,7 +23,7 @@ end
 def user_input(val)
   if val == "1"
     # display player prompt
-    puts "player prompt will go here"
+    player_prompt
   elsif val == "2"
     # display team prompt
     puts "team prompt will go here"
@@ -35,9 +36,8 @@ def user_input(val)
 end
 
 def player_prompt
-  puts "Select the player you are looking for."
-  input
-
+  puts "Enter player to see stats"
+  display_player_stats(input)
   # if player iexists in db
     # return more/return player
   #else
@@ -76,8 +76,10 @@ def top_ten
   puts "------------------------------------------------------------------------"
 end
 
-def stats_player(name)
-  player = Player.find_by full_name: name
+def display_player_stats(name)
+  # binding.pry
+  player = Player.find_by full_name: name.downcase
+  puts player.total_pts.to_s
 end
 
 welcome
