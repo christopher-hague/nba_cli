@@ -79,7 +79,13 @@ end
 def display_player_stats(name)
   # binding.pry
   player = Player.find_by full_name: name.downcase
-  puts player.total_pts.to_s
+  puts "Per game statistics for #{player.first_name} #{player.last_name}"
+  puts "Points: " + player.ppg.to_s
+  puts "Rebounds: " + player.rpg.to_s
+  puts "Assists: " + player.apg.to_s
+  puts "Turnovers: " + player.topg.to_s
+  puts "Steals: " + player.spg.to_s
+  puts "Blocks: " + player.blk_pg.to_s
 end
 
 welcome
