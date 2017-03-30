@@ -24,6 +24,7 @@ def user_input(val)
   if val == "1"
     # display player prompt
     player_prompt
+
   elsif val == "2"
     # display team prompt
     puts "team prompt will go here"
@@ -37,7 +38,14 @@ end
 
 def player_prompt
   puts "Enter player to see stats"
-  display_player_stats(input)
+  name = input
+  display_player_summary(name)
+
+  puts "Enter 'all' to see complete stats"
+
+  if input.downcase == 'all'
+    display_player_stats(name)
+  end
   # if player iexists in db
     # return more/return player
   #else
@@ -76,7 +84,7 @@ def top_ten
   puts "------------------------------------------------------------------------"
 end
 
-def display_player_stats(name)
+def display_player_summary(name)
   # binding.pry
   player = Player.find_by full_name: name.downcase
   puts "Per game statistics for #{player.first_name} #{player.last_name}:"
@@ -86,6 +94,21 @@ def display_player_stats(name)
   puts "Turnovers: " + player.topg.to_s
   puts "Steals: " + player.spg.to_s
   puts "Blocks: " + player.blk_pg.to_s
+end
+
+def display_player_stats(name)
+  player = Player.find_by full_name: name.downcase
+  player.attributes.each do |k, v|
+    if k == "mins"
+      puts "#{k}: #{v.to_i / 60}"
+    elsif k == "full_name" || k == "first_name" || k == "last_name" || k == "id"
+      next
+    elsif v == nil
+      puts "#{k}: 0"
+    else
+      puts "#{k}: #{v}"
+    end
+  end
 end
 
 welcome
