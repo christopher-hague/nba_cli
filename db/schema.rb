@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330174031) do
+ActiveRecord::Schema.define(version: 20170330200553) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "name"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170330174031) do
     t.integer "blk_pg"
     t.integer "pf"
     t.integer "pf_pg"
+    t.string  "full_name"
   end
 
   create_table "schedules", force: :cascade do |t|

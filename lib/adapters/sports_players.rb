@@ -13,6 +13,7 @@ class Adapters::PlayerStats
     player = Player.new do |p|
       p.first_name = val["player"]["FirstName"]
       p.last_name = val["player"]["LastName"]
+      p.full_name = "#{p.first_name} #{p.last_name}"
       p.number = val["player"]["JerseyNumber"]
       p.pos = val["player"]["Position"]
       p.total_pts = val["stats"]["Pts"]["#text"]

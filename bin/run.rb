@@ -75,4 +75,9 @@ def top_ten
   end
   puts "------------------------------------------------------------------------"
 end
+
+def stats_player(name)
+  #player = Player.find_by name: name
+end
+
 welcome
