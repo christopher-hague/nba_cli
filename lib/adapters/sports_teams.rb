@@ -46,4 +46,4 @@ class Adapters::SportsTeamStats
 
 end# /CLASS ENDS HERE
 
-Adapters::SportsTeamStats.new.seed_db
+#Adapters::SportsTeamStats.new.seed_db
