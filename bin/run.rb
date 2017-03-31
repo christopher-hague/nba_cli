@@ -75,4 +75,7 @@ def top_ten
   end
   puts "------------------------------------------------------------------------"
 end
-welcome
+#welcome
+Adapters::PlayerStats.new.seed_db
+#Adapters::SportsSchedule.new.seed_db
+#Adapters::SportsTeamStats.new.seed_db

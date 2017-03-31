@@ -36,6 +36,7 @@ class Adapters::PlayerStats
       p.blk_pg = val["stats"]["BlkPerGame"]["#text"]
       p.pf = val["stats"]["FoulPers"]["#text"]
       p.pf_pg = val["stats"]["FoulPersPerGame"]["#text"]
+      p.team_name = val["team"]["Name"]
     end
     player
   end
@@ -45,11 +46,7 @@ class Adapters::PlayerStats
     players = fetch_player_data["cumulativeplayerstats"]["playerstatsentry"]
     players.each do |val|
        p = create_player(val)
-       Player.find_or_create_by(first_name: p.first_name, last_name: p.last_name,
-        number: p.number, pos: p.pos , total_pts: p.total_pts, ppg: p.ppg, ast: p.ast, apg: p.apg,
-        reb: p.reb, rpg: p.rpg, to: p.to, topg: p.topg, mins: p.mins, fg: p.fg, fg_att: p.fg_att,
-        fg_pct: p.fg_pct, fg_3pt_att: p.fg_3pt_att, fg_3pt: p.fg_3pt, fg_3pt_pg: p.fg_3pt_pg,
-        stl: p.stl, blk: p.blk, blk_pg: p.blk_pg, pf: p.pf, pf_pg: p.pf_pg)
+       Player.find_or_create_by(p.attributes)
     end
   end
 
